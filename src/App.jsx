@@ -183,7 +183,6 @@ const SurpriseCards = () => {
     "Even CA teachers would be proud of your effort 💗✨",
     "You will pass, not by chance but by **effort** 💞🔥",
     "Future CA in progress… please stand back 😭💗",
-
   ];
 
   const [i, setI] = useState(0);
@@ -191,12 +190,27 @@ const SurpriseCards = () => {
   return (
     <div className="flex flex-col items-center mt-6 md:mt-10">
       <motion.div
-        className="p-4 md:p-5 rounded-2xl bg-white shadow-lg border border-pink-200 text-pink-600 text-base md:text-lg text-center max-w-xs"
+        className="
+        relative overflow-hidden
+        p-5 md:p-6 
+        rounded-3xl 
+        bg-white
+        border border-pink-100 
+        shadow-[0_8px_25px_rgba(255,180,200,0.45)]
+        text-pink-600 
+        text-base md:text-lg 
+        text-center 
+        max-w-xs
+      "
         style={{ fontFamily: "Fredoka" }}
         key={i}
         initial={{ opacity: 0, scale: 0.85 }}
         animate={{ opacity: 1, scale: 1 }}
       >
+        {/* ✨ PASTEL BUBBLE BG */}
+        <div className="absolute -top-10 -left-10 w-24 h-24 bg-pink-200 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-purple-200 rounded-full blur-3xl opacity-40"></div>
+
         {messages[i]}
       </motion.div>
 
@@ -214,38 +228,38 @@ const SurpriseCards = () => {
 /* -------------------- TIMELINE -------------------- */
 
 const Timeline = () => {
-const steps = [
-  {
-    title: "CA Foundation (Done)",
-    emoji: "📘",
-    message:
-      "Your CA journey didn’t just start with Foundation… it started way before that — back when you were in 9th and 10th, getting inspired by every CA and every aspirant you saw. 🌟 You passed Foundation like a queen 👑, even when nobody knew how many days you studied silently, how many times you couldn’t tell anyone that things weren’t working… but you still showed up. That’s your strength 💗.",
-  },
-  {
-    title: "CA Inter (Now)",
-    emoji: "📚✨",
-    message:
-      "This is where you are now — the hardest, heaviest phase. Long days, tired eyes, stress, pressure… but still you’re trying again and again. You once told your Ammi during FYBCOM exams, ‘Ab m thak gyi hu,’ and she said, ‘Abhi se? Abhi to shuruwat h.’ And look at you now… still fighting, still standing, still dreaming. That’s why I’m so proud of you 💕.",
-  },
-  {
-    title: "Articleship (Soon)",
-    emoji: "📝",
-    message:
-      "One day you’ll step into your Articleship — cute professional girl loading 😭💼. Your confidence will glow here, because you’re not average… you’re not weak… you’ve ALWAYS aimed high. You never settled for anything less than success, and that mindset will make you shine in every office you walk into ✨.",
-  },
-  {
-    title: "CA Finals (Soon)",
-    emoji: "🔥",
-    message:
-      "CA Finals look scary… but you are scarier 🔥. Every attempt, every failure, every tear — they’re all building a stronger version of you. You’ve always seen top ranks and big dreams, and trust me, this fire inside you will take you all the way. You’re built for this 💖.",
-  },
-  {
-    title: "CA Sayyed Aliza",
-    emoji: "💖🎓",
-    message:
-  "One day I’ll call you **CA Sayyed Aliza**… and brag everywhere like the proudest man alive 😭💗. And when that day comes, you’ll remember every moment you wanted to give up but didn’t. Your journey is not ordinary — it’s powerful, emotional, and inspiring. You’ve carried pressure, expectations, and responsibility on your shoulders quietly… especially for your parents. You’ve always wanted to make them proud — and you will. All those late nights, silent breakdowns, hidden stress, and unstoppable effort… it will all come back to you as success. And I’ll be right here, witnessing your glow-up every step of the way, cheering for you louder than anyone 💕.",  },
-];
-
+  const steps = [
+    {
+      title: "CA Foundation (Done)",
+      emoji: "📘",
+      message:
+        "Your CA journey didn’t just start with Foundation… it started way before that — back when you were in 9th and 10th, getting inspired by every CA and every aspirant you saw. 🌟 You passed Foundation like a queen 👑, even when nobody knew how many days you studied silently, how many times you couldn’t tell anyone that things weren’t working… but you still showed up. That’s your strength 💗.",
+    },
+    {
+      title: "CA Inter (Now)",
+      emoji: "📚✨",
+      message:
+        "This is where you are now — the hardest, heaviest phase. Long days, tired eyes, stress, pressure… but still you’re trying again and again. You once told your Ammi during FYBCOM exams, ‘Ab m thak gyi hu,’ and she said, ‘Abhi se? Abhi to shuruwat h.’ And look at you now… still fighting, still standing, still dreaming. That’s why I’m so proud of you 💕.",
+    },
+    {
+      title: "Articleship (Soon)",
+      emoji: "📝",
+      message:
+        "One day you’ll step into your Articleship — cute professional girl loading 😭💼. Your confidence will glow here, because you’re not average… you’re not weak… you’ve ALWAYS aimed high. You never settled for anything less than success, and that mindset will make you shine in every office you walk into ✨.",
+    },
+    {
+      title: "CA Finals (Soon)",
+      emoji: "🔥",
+      message:
+        "CA Finals look scary… but you are scarier 🔥. Every attempt, every failure, every tear — they’re all building a stronger version of you. You’ve always seen top ranks and big dreams, and trust me, this fire inside you will take you all the way. You’re built for this 💖.",
+    },
+    {
+      title: "CA Sayyed Aliza",
+      emoji: "💖🎓",
+      message:
+        "One day I’ll call you **CA Sayyed Aliza**… and brag everywhere like the proudest man alive 😭💗. And when that day comes, you’ll remember every moment you wanted to give up but didn’t. Your journey is not ordinary — it’s powerful, emotional, and inspiring. You’ve carried pressure, expectations, and responsibility on your shoulders quietly… especially for your parents. You’ve always wanted to make them proud — and you will. All those late nights, silent breakdowns, hidden stress, and unstoppable effort… it will all come back to you as success. And I’ll be right here, witnessing your glow-up every step of the way 💕.",
+    },
+  ];
 
   const [selected, setSelected] = useState(null);
 
@@ -262,13 +276,26 @@ const steps = [
         {steps.map((step, i) => (
           <motion.div
             key={i}
-            className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white rounded-xl border border-purple-200 shadow-sm cursor-pointer"
+            className="
+            relative overflow-hidden
+            flex items-center gap-3 md:gap-4 
+            p-4 md:p-5 
+            bg-white 
+            rounded-2xl 
+            border border-purple-100 
+            shadow-[0_6px_20px_rgba(200,160,255,0.35)]
+            cursor-pointer 
+          "
             style={{ fontFamily: "Fredoka" }}
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             whileHover={{ scale: 1.03 }}
             onClick={() => setSelected(step)}
           >
+            {/* 🫧 pastel glow */}
+            <div className="absolute -top-8 right-0 w-24 h-24 bg-purple-200/40 blur-2xl"></div>
+            <div className="absolute -bottom-8 left-0 w-20 h-20 bg-pink-200/40 blur-2xl"></div>
+
             <span className="text-2xl md:text-3xl">{step.emoji}</span>
             <span className="text-purple-700 text-base md:text-lg font-medium">
               {step.title}
