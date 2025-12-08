@@ -4,6 +4,10 @@ import panda1 from "./panda.png";
 import panda2 from "./panda2.png";
 import panda3 from "./panda3.png";
 import hug from "./hug.gif";
+import heart1 from "./heart1.png";
+import heart2 from "./heart2.png";
+import heart3 from "./heart3.png";
+
 
 export default function App() {
   useEffect(() => {
@@ -53,34 +57,36 @@ export default function App() {
 /* -------------------- FLOATING HEARTS -------------------- */
 
 const FloatingHearts = () => {
-  const hearts = Array.from({ length: 12 });
+  const heartImages = [heart1, heart2, heart3]; // your custom stickers
+  const hearts = Array.from({ length: 35 });
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      {hearts.map((_, i) => (
-        <motion.div
-        key={i}
-        className="absolute text-pink-400 text-2xl md:text-3xl"
-        style={{
-            left: `${Math.random() * 100}%`,
-            bottom: `${-20 - Math.random() * 30}px`,
-            fontFamily: "Indie Flower",
-        }}
-        animate={{
-            y: [-20, -(window.innerHeight + 1000)],
-            opacity: [1, 0],
-        }}
-        transition={{
-            duration: 10 + Math.random() * 4,
-            repeat: Infinity,
-            delay: Math.random() * 3,
-        }}
-        >
-        ❤️
-        </motion.div>
+      {hearts.map((_, i) => {
+        const img = heartImages[i % heartImages.length]; // rotate between 3 PNGs
 
-
-      ))}
+        return (
+          <motion.img
+            key={i}
+            src={img}
+            className="absolute w-6 md:w-10 opacity-80"
+            style={{
+              left: `${Math.random() * 100}%`,
+              bottom: `${-40 - Math.random() * 50}px`,
+            }}
+            animate={{
+              y: [-20, -(window.innerHeight + 1000)],
+              opacity: [1, 0],
+              rotate: [0, 15, -15, 0], // cute floating wobble
+            }}
+            transition={{
+              duration: 10 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+            }}
+          />
+        );
+      })}
     </div>
   );
 };
