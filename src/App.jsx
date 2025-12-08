@@ -178,12 +178,9 @@ const SurpriseCards = () => {
     "One day your signature will be worth GOLD ✨💛",
     "You’re literally built for this CA journey 💗🔥",
     "Tax chapter can't tax your confidence 😭💗",
-    "Audit is scary, but you’re scarier 😭🔥",
     "Your focus > all 6 CA subjects combined 😭💗",
-    "CA Inter is temporary. CA Sayyed Aliza is forever ✨👑",
     "One day clients will wait outside your cabin 💼💗",
-    "Even CA teachers would be proud of your effort 💗✨",
-    "You will pass, not by chance but by **effort** 💞🔥",
+    "Your parents would be proud of your effort 💗✨",
     "Future CA in progress… please stand back 😭💗",
   ];
 
