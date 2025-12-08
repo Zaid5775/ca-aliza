@@ -32,7 +32,7 @@ export default function App() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          Hi My Future CA Girl 💖🌸
+          Hi Future CA Girl 💖🌸
         </motion.h1>
 
         <TypingMessage />
@@ -47,7 +47,7 @@ export default function App() {
           className="text-center mt-10 text-purple-700 text-lg md:text-xl"
           style={{ fontFamily: "Indie Flower" }}
         >
-          Made with love by your Zaid 💗
+          
         </p>
       </div>
     </div>
@@ -120,7 +120,7 @@ document.head.appendChild(style);
 /* -------------------- TYPING MESSAGE -------------------- */
 
 const TypingMessage = () => {
-  const text = "My cute Alizehhh... I’m so proud of you 💗";
+  const text = "Cutuuu Alizehhh... Your parents so proud of you 💗";
   const [display, setDisplay] = useState("");
 
   useEffect(() => {
@@ -257,7 +257,7 @@ const Timeline = () => {
       title: "CA Sayyed Aliza",
       emoji: "💖🎓",
       message:
-        "One day I’ll call you **CA Sayyed Aliza**… and brag everywhere like the proudest man alive 😭💗. And when that day comes, you’ll remember every moment you wanted to give up but didn’t. Your journey is not ordinary — it’s powerful, emotional, and inspiring. You’ve carried pressure, expectations, and responsibility on your shoulders quietly… especially for your parents. You’ve always wanted to make them proud — and you will. All those late nights, silent breakdowns, hidden stress, and unstoppable effort… it will all come back to you as success. And I’ll be right here, witnessing your glow-up every step of the way 💕.",
+        "One day We’ll call you **CA Sayyed Aliza**… . And when that day comes, you’ll remember every moment you wanted to give up but didn’t. Your journey is not ordinary — it’s powerful, emotional, and inspiring. You’ve carried pressure, expectations, and responsibility on your shoulders quietly… especially for your parents. You’ve always wanted to make them proud — and you will. All those late nights, silent breakdowns, hidden stress, and unstoppable effort… it will all come back to you as success. And I’ll be right here, witnessing your glow-up every step of the way 💕.",
     },
   ];
 
@@ -361,7 +361,7 @@ const CuteLetter = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-   My Alizehhh 💗 <br />
+   Sayyed Alizehhh 💗 <br />
 You have no idea how proud I am of you.  
 Not because of marks.  
 Not because of ranks.  
