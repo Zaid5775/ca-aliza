@@ -38,6 +38,7 @@ export default function App() {
         <TypingMessage />
         <Stickers />
         <SurpriseCards />
+        <ExamMotivation />
         <Timeline />
         <CuteLetter />
         <SendAHug />
@@ -57,7 +58,7 @@ export default function App() {
 /* -------------------- FLOATING HEARTS -------------------- */
 
 const FloatingHearts = () => {
-  const heartImages = [heart1, heart2, heart3]; // your custom stickers
+  const heartImages = [heart1, heart2, heart3]; 
   const hearts = Array.from({ length: 35 });
 
   return (
@@ -75,7 +76,7 @@ const FloatingHearts = () => {
               bottom: `${-40 - Math.random() * 50}px`,
             }}
             animate={{
-              y: [-20, -(window.innerHeight + 1000)],
+              y: [-20, -(window.innerHeight + 2000)],
               opacity: [1, 0],
               rotate: [0, 15, -15, 0], // cute floating wobble
             }}
@@ -334,6 +335,195 @@ const Timeline = () => {
     </div>
   );
 };
+
+/* -------------------- EXAM MOTIVATION -------------------- */
+const ExamMotivation = () => {
+  const [openKey, setOpenKey] = useState(null);
+
+  const group1 = [
+    {
+      paper: "Advanced Accounting",
+      date: "6 Jan 2026",
+      emoji: "📘✨",
+      enabled: true, 
+      msg: `Okay onggg, it's finally exam week.
+It's about staying calm and focused, aluuu 💗
+Advanced Accounting is lengthy, yes :/ but you've practiced enough for this - more than you think.
+
+I don't know shit about AA honestly 😭
+but what I do know is
+you've already done the hard part while studying.
+Today is just about showing it on paper.
+
+Don't rush. 
+Don't panic.
+And please don't doubt yourself mid-paper.
+
+Jo padha hai, whi likhna.
+Clean. Clear. Simple.
+
+I know you've worked hard for this.
+I know you've stressed over this.
+And I know you're capable of handling today. 💗
+
+Finish the paper, walk out,
+and be proud of yourself, 
+and remember who you are
+CA Aliza Sayyed🌸`
+
+    },
+    {
+      paper: "Corporate & Other Laws",
+      date: "8 Jan 2026",
+      emoji: "⚖️💼",
+      enabled: false,
+      msg:
+        "Law paper mein speed nahi, clarity ka game hota hai. Jab yeh open hoga, bas yaad rakhna — question ko samajhna aadha answer hota hai. Overthinking mat karna ✨.",
+    },
+    {
+      paper: "Taxation",
+      date: "10 Jan 2026",
+      emoji: "🧾🔥",
+      enabled: false,
+      msg:
+        "Tax start hone se pehle heavy lagta hai, phir flow aa jaata hai. Ek question, ek step — bas wahi karna. Tu handle kar sakti hai, jaise hamesha karti hai 💼💗.",
+    },
+  ];
+
+  const group2 = [
+    {
+      paper: "Cost & Management Accounting",
+      date: "12 Jan 2026",
+      emoji: "📊💗",
+      enabled: false,
+      msg:
+        "Costing mein final answer se zyada process matter karta hai. Steps clean rakhna, working neat likhna. Agar atak bhi gayi, panic mat karna — marks milte hain ✨.",
+    },
+    {
+      paper: "FM & SM",
+      date: "17 Jan 2026",
+      emoji: "📈🚀",
+      enabled: false,
+      msg:
+        "Last paper energy drain karega, par relief bhi paas hoga. FM mein patience, SM mein structure — bas yahi yaad rakhna. End tak strong rehna, bas thoda sa aur 💖.",
+    },
+        {
+      paper: "Auditing & Ethics",
+      date: "19 Jan 2026",
+      emoji: "📝🌸",
+      enabled: false,
+      msg:
+        "Audit shor nahi karta, calm rehne walon ko reward karta hai. Short points, headings, simple language — bas yahi kaafi hai. Ethics toh waise bhi tu naturally samajhti hai 💗.",
+    }
+  ];
+
+  const renderGroup = (group, glowClass, lockedTextColor) =>
+    group.map((p, i) => {
+      const key = `${p.paper}-${i}`;
+      const isOpen = openKey === key;
+
+      return (
+        <motion.div
+          key={key}
+          className={`relative overflow-hidden rounded-3xl p-5 border shadow-[0_8px_25px_rgba(0,0,0,0.1)]
+            ${
+              p.enabled
+                ? "bg-white cursor-pointer"
+                : "bg-gray-50 opacity-60 cursor-not-allowed"
+            }
+          `}
+          style={{ fontFamily: "Fredoka" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          onClick={() => {
+            if (p.enabled) {
+              setOpenKey(isOpen ? null : key);
+            }
+          }}
+        >
+          {/* glow */}
+          <div className={`absolute -top-10 -left-10 w-24 h-24 ${glowClass} rounded-full blur-3xl opacity-30`} />
+
+          {/* header */}
+          <div className="flex justify-between items-center">
+            <h4 className="text-lg text-purple-700 font-semibold">
+              {p.emoji} {p.paper}
+            </h4>
+            <span className="text-sm text-purple-400">
+              {p.enabled ? (isOpen ? "▲" : "▼") : "🔒"}
+            </span>
+          </div>
+
+          <p className="text-sm text-purple-500 mt-1">
+            Exam Date: {p.date}
+          </p>
+
+          {/* message */}
+{p.enabled && isOpen && (
+  <motion.div
+    className="relative mt-4 p-4 rounded-2xl overflow-hidden"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+  >
+    {/* soft pastel blobs */}
+    <div className="absolute -top-10 -left-10 w-32 h-32 bg-[#FD7979] rounded-full blur-3xl opacity-20"></div>
+    <div className="absolute top-1/3 -right-12 w-36 h-36 bg-[#FFCDC9] rounded-full blur-3xl opacity-25"></div>
+    <div className="absolute -bottom-12 left-1/4 w-40 h-40 bg-[#FDACAC] rounded-full blur-3xl opacity-20"></div>
+
+    <p className="relative z-10 text-sm text-purple-700 leading-relaxed whitespace-pre-line text-center italic">
+      {p.msg}
+    </p>
+  </motion.div>
+)}
+
+
+          {/* locked note */}
+          {!p.enabled && (
+            <p
+              className={`mt-3 text-xs italic ${lockedTextColor}`}
+            >
+              This one will open sooooonnnnnn aluuuu 💗
+            </p>
+          )}
+        </motion.div>
+      );
+    });
+
+  return (
+    <div className="mt-20 max-w-md mx-auto px-3">
+      <h2
+        className="text-center text-3xl text-purple-700 mb-6"
+        style={{ fontFamily: "Indie Flower" }}
+      >
+        Few Words for These Days 💌
+      </h2>
+
+      {/* GROUP I */}
+      <div className="mb-10">
+        <h3 className="text-xl text-pink-600 mb-4 text-center font-medium">
+          💖 Group I - First Three. You Got This 💖
+        </h3>
+
+        <div className="space-y-4">
+          {renderGroup(group1, "bg-pink-200", "text-gray-400")}
+        </div>
+      </div>
+
+      {/* GROUP II */}
+      <div>
+        <h3 className="text-xl text-purple-600 mb-4 text-center font-medium">
+          💖 Group II — The Last Stretch 💖
+        </h3>
+
+        <div className="space-y-4">
+          {renderGroup(group2, "bg-purple-200", "text-gray-400")}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
 
 
 /* -------------------- LETTER -------------------- */
