@@ -33,8 +33,8 @@ export default function App() {
         <Stickers />
         <SurpriseCards />
         <ExamMotivation />
-        <Timeline />
         <CuteLetter />
+        <Timeline />
         <SendAHug />
        
 
