@@ -13,7 +13,7 @@ export default function App() {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-pink-70 to-purple-100 p-4 md:p-6 relative overflow-hidden"
+      className="min-h-screen bg-pink-50 p-4 md:p-6 relative overflow-hidden"
       onClick={(e) => createStar(e)}
     >
       <FloatingHearts />
