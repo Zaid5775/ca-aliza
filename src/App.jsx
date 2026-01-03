@@ -210,13 +210,25 @@ const SurpriseCards = () => {
         {messages[i]}
       </motion.div>
 
-      <button
-        onClick={() => setI((i + 1) % messages.length)}
-        className="mt-4 px-5 py-2 bg-[#FFE4EF] text-[#D34E4E] rounded-full shadow-md text-sm md:text-base"
-        style={{ fontFamily: "Nunito" }}
-      >
-        Tap for Motivation 💞
-      </button>
+<button
+  onClick={() => setI((i + 1) % messages.length)}
+  className="
+    mt-4
+    px-8 py-3
+    bg-[#FFE4EF]
+    text-white
+    rounded-full
+    shadow-md
+    text-base md:text-lg
+    hover:scale-105
+    active:scale-95
+    transition-transform
+  "
+  style={{ fontFamily: "Nunito" }}
+>
+  Tap for Motivation 💞
+</button>
+
     </div>
   );
 };
@@ -320,7 +332,7 @@ const Timeline = () => {
 
             <button
               onClick={() => setSelected(null)}
-              className="px-5 py-2 bg-[#FFE4EF] text-[#D34E4E] rounded-full shadow-md text-sm md:text-base block mx-auto"
+              className="px-5 py-2 bg-[#FFE4EF] text-white rounded-full shadow-md text-sm md:text-base block mx-auto"
               style={{ fontFamily: "Nunito" }}
             >
               Close 💞
@@ -523,7 +535,7 @@ const CuteLetter = () => {
       {!open && (
         <motion.button
           onClick={() => setOpen(true)}
-          className="px-8 py-3 bg-[#FFE4EF] text-[#D34E4E] rounded-full shadow-md text-lg md:text-xl"
+          className="px-8 py-3 bg-[#FFE4EF] text-white rounded-full shadow-md text-lg md:text-xl"
           style={{ fontFamily: "Nunito" }}
           whileHover={{ scale: 1.05 }}
         >
@@ -631,7 +643,7 @@ const SendAHug = () => {
     <div className="mt-20 text-center">
       <button
         onClick={() => setShow(true)}
-        className="px-8 py-3 bg-[#FFE4EF] text-[#D34E4E] rounded-full shadow-md text-lg"
+        className="px-8 py-3 bg-[#FFE4EF] text-white rounded-full shadow-md text-lg"
         style={{ fontFamily: "Nunito" }}
       >
         You want a hug??? 🤗🐼
