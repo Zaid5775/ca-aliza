@@ -377,7 +377,11 @@ And I know you're capable of handling today. 💗
 Finish the paper, walk out,
 and be proud of yourself, 
 and remember who you are
-CA Aliza Sayyed🌸`
+CA Aliza Sayyed🌸
+
+And one last thing
+All the veryyyyyyyyyy bestttttttttttt alizehhhhhhhhh <3
+`
 
     },
     {
