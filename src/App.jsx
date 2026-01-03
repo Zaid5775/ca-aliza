@@ -10,13 +10,6 @@ import heart3 from "./heart3.png";
 
 
 export default function App() {
-  useEffect(() => {
-    const link = document.createElement("link");
-    link.href =
-      "https://fonts.googleapis.com/css2?family=Indie+Flower&family=Fredoka:wght@300;400;500&display=swap";
-    link.rel = "stylesheet";
-    document.head.appendChild(link);
-  }, []);
 
   return (
     <div
@@ -26,14 +19,15 @@ export default function App() {
       <FloatingHearts />
 
       <div className="relative z-10">
-        <motion.h1
-          className="text-3xl md:text-5xl text-pink-600 font-bold text-center"
-          style={{ fontFamily: "Indie Flower" }}
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          Hi Future CA Girl 💖🌸
-        </motion.h1>
+<motion.h1
+  className="text-3xl md:text-5xl text-[#D34E4E] font-bold text-center"
+  style={{ fontFamily: "Dancing Script" }}
+>
+  Hi Future CA Girl 💖🌸
+</motion.h1>
+
+
+
 
         <TypingMessage />
         <Stickers />
@@ -46,7 +40,7 @@ export default function App() {
 
         <p
           className="text-center mt-10 text-purple-700 text-lg md:text-xl"
-          style={{ fontFamily: "Indie Flower" }}
+          style={{ fontFamily: "Dancing Script" }}
         >
           
         </p>
@@ -121,7 +115,7 @@ document.head.appendChild(style);
 /* -------------------- TYPING MESSAGE -------------------- */
 
 const TypingMessage = () => {
-  const text = "Cutuuu Alizehhh... Your parents so proud of you 💗";
+  const text = "Cutuuu Alizehhh... your parents so proud of you 💗";
   const [display, setDisplay] = useState("");
 
   useEffect(() => {
@@ -134,12 +128,14 @@ const TypingMessage = () => {
   }, []);
 
   return (
-    <p
-      className="text-center text-purple-700 text-lg md:text-xl mt-4 md:mt-6 px-4"
-      style={{ fontFamily: "Indie Flower" }}
-    >
-      {display}
-    </p>
+<p
+  className="text-center text-[#8B3A3A] text-lg md:text-xl mt-4 md:mt-6 px-4"
+  style={{ fontFamily: "Dancing Script" }}
+
+>
+  {display}
+</p>
+
   );
 };
 
@@ -195,29 +191,29 @@ const SurpriseCards = () => {
         p-5 md:p-6 
         rounded-3xl 
         bg-white
-        border border-pink-100 
+        border-[#FDACAC]
         shadow-[0_8px_25px_rgba(255,180,200,0.45)]
-        text-pink-600 
+        text-[#D34E4E]
         text-base md:text-lg 
         text-center 
         max-w-xs
       "
-        style={{ fontFamily: "Fredoka" }}
+        style={{ fontFamily: "Dancing Script" }}
         key={i}
         initial={{ opacity: 0, scale: 0.85 }}
         animate={{ opacity: 1, scale: 1 }}
       >
         {/* ✨ PASTEL BUBBLE BG */}
-        <div className="absolute -top-10 -left-10 w-24 h-24 bg-pink-200 rounded-full blur-3xl opacity-30"></div>
-        <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-purple-200 rounded-full blur-3xl opacity-40"></div>
+        <div className="absolute -top-10 -left-10 w-24 h-24 bg-[#FD7979]/40 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#FFCDC9]/40 rounded-full blur-3xl opacity-40"></div>
 
         {messages[i]}
       </motion.div>
 
       <button
         onClick={() => setI((i + 1) % messages.length)}
-        className="mt-4 px-5 py-2 bg-pink-500 text-white rounded-full shadow-md text-sm md:text-base"
-        style={{ fontFamily: "Fredoka" }}
+        className="mt-4 px-5 py-2 bg-pink-400 text-white rounded-full shadow-md text-sm md:text-base"
+        style={{ fontFamily: "Nunito" }}
       >
         Tap for Motivation 💞
       </button>
@@ -267,8 +263,8 @@ const Timeline = () => {
   return (
     <div className="mt-10 md:mt-16 max-w-sm md:max-w-md mx-auto px-2">
       <h2
-        className="text-center text-2xl md:text-3xl text-purple-700 mb-4"
-        style={{ fontFamily: "Indie Flower" }}
+        className="text-center text-2xl md:text-3xl text-pink-400 mb-4"
+        style={{ fontFamily: "Nunito" }}
       >
         Your CA Journey 🌟
       </h2>
@@ -283,11 +279,11 @@ const Timeline = () => {
             p-4 md:p-5 
             bg-white 
             rounded-2xl 
-            border border-purple-100 
-            shadow-[0_6px_20px_rgba(200,160,255,0.35)]
+            border-[#FDACAC]
+            shadow-[0_6px_20px_rgba(253,121,121,0.35)]
             cursor-pointer 
           "
-            style={{ fontFamily: "Fredoka" }}
+            style={{ fontFamily: "Nunito" }}
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             whileHover={{ scale: 1.03 }}
@@ -298,7 +294,7 @@ const Timeline = () => {
             <div className="absolute -bottom-8 left-0 w-20 h-20 bg-pink-200/40 blur-2xl"></div>
 
             <span className="text-2xl md:text-3xl">{step.emoji}</span>
-            <span className="text-purple-700 text-base md:text-lg font-medium">
+            <span className="text-pink-400 text-base md:text-lg font-medium">
               {step.title}
             </span>
           </motion.div>
@@ -312,8 +308,8 @@ const Timeline = () => {
           animate={{ opacity: 1 }}
         >
           <motion.div
-            className="bg-white p-5 md:p-6 rounded-3xl max-w-sm text-purple-700 shadow-xl border-2 border-purple-200"
-            style={{ fontFamily: "Indie Flower", lineHeight: "1.6" }}
+            className="bg-white p-5 md:p-6 rounded-3xl max-w-sm text-[#D34E4E] shadow-xl border-2 border-purple-200"
+            style={{ fontFamily: "Nunito", lineHeight: "1.6" }}
             initial={{ scale: 0.7, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
           >
@@ -324,8 +320,8 @@ const Timeline = () => {
 
             <button
               onClick={() => setSelected(null)}
-              className="px-5 py-2 bg-pink-500 text-white rounded-full shadow-md text-sm md:text-base block mx-auto"
-              style={{ fontFamily: "Fredoka" }}
+              className="px-5 py-2 bg-[#D34E4E] text-white rounded-full shadow-md text-sm md:text-base block mx-auto"
+              style={{ fontFamily: "Nunito" }}
             >
               Close 💞
             </button>
@@ -432,7 +428,8 @@ CA Aliza Sayyed🌸`
                 : "bg-gray-50 opacity-60 cursor-not-allowed"
             }
           `}
-          style={{ fontFamily: "Fredoka" }}
+          style={{ fontFamily: "Nunito" }}
+
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           onClick={() => {
@@ -446,15 +443,15 @@ CA Aliza Sayyed🌸`
 
           {/* header */}
           <div className="flex justify-between items-center">
-            <h4 className="text-lg text-purple-700 font-semibold">
+            <h4 className="text-lg text-[#D34E4E] font-semibold">
               {p.emoji} {p.paper}
             </h4>
-            <span className="text-sm text-purple-400">
+            <span className="text-sm text-[#D34E4E]">
               {p.enabled ? (isOpen ? "▲" : "▼") : "🔒"}
             </span>
           </div>
 
-          <p className="text-sm text-purple-500 mt-1">
+          <p className="text-sm text-[#D34E4E] mt-1">
             Exam Date: {p.date}
           </p>
 
@@ -465,12 +462,9 @@ CA Aliza Sayyed🌸`
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
   >
-    {/* soft pastel blobs */}
-    <div className="absolute -top-10 -left-10 w-32 h-32 bg-[#FD7979] rounded-full blur-3xl opacity-20"></div>
-    <div className="absolute top-1/3 -right-12 w-36 h-36 bg-[#FFCDC9] rounded-full blur-3xl opacity-25"></div>
-    <div className="absolute -bottom-12 left-1/4 w-40 h-40 bg-[#FDACAC] rounded-full blur-3xl opacity-20"></div>
+    
 
-    <p className="relative z-10 text-sm text-purple-700 leading-relaxed whitespace-pre-line text-center italic">
+    <p className="relative z-10 text-sm text-[#D34E4E] leading-relaxed whitespace-pre-line text-center ">
       {p.msg}
     </p>
   </motion.div>
@@ -491,18 +485,15 @@ CA Aliza Sayyed🌸`
 
   return (
     <div className="mt-20 max-w-md mx-auto px-3">
-      <h2
-        className="text-center text-3xl text-purple-700 mb-6"
-        style={{ fontFamily: "Indie Flower" }}
+      <h1
+        className="text-center text-3xl text-[#D34E4E] mb-6"
+        style={{ fontFamily: "Dancing Script" }}
       >
         Few Words for These Days 💌
-      </h2>
+      </h1>
 
       {/* GROUP I */}
       <div className="mb-10">
-        <h3 className="text-xl text-pink-600 mb-4 text-center font-medium">
-          💖 Group I - First Three. You Got This 💖
-        </h3>
 
         <div className="space-y-4">
           {renderGroup(group1, "bg-pink-200", "text-gray-400")}
@@ -511,10 +502,6 @@ CA Aliza Sayyed🌸`
 
       {/* GROUP II */}
       <div>
-        <h3 className="text-xl text-purple-600 mb-4 text-center font-medium">
-          💖 Group II — The Last Stretch 💖
-        </h3>
-
         <div className="space-y-4">
           {renderGroup(group2, "bg-purple-200", "text-gray-400")}
         </div>
@@ -536,8 +523,8 @@ const CuteLetter = () => {
       {!open && (
         <motion.button
           onClick={() => setOpen(true)}
-          className="px-8 py-3 bg-purple-500 text-white rounded-full shadow-md text-lg md:text-xl"
-          style={{ fontFamily: "Fredoka" }}
+          className="px-8 py-3 bg-pink-400 text-white rounded-full shadow-md text-lg md:text-xl"
+          style={{ fontFamily: "Nunito" }}
           whileHover={{ scale: 1.05 }}
         >
           Open Cute Letter 💌
@@ -546,8 +533,8 @@ const CuteLetter = () => {
 
       {open && (
         <motion.div
-          className="p-5 md:p-6 bg-white rounded-3xl shadow-xl border-2 border-purple-200 max-w-sm md:max-w-lg mx-auto text-lg md:text-xl text-purple-700"
-          style={{ fontFamily: "Indie Flower", lineHeight: "1.7" }}
+          className="p-5 md:p-6 bg-white rounded-3xl shadow-xl border-2 border-purple-200 max-w-sm md:max-w-lg mx-auto text-lg md:text-xl text-[#D34E4E]"
+          style={{ fontFamily: "Nunito", lineHeight: "1.7" }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
@@ -644,8 +631,8 @@ const SendAHug = () => {
     <div className="mt-20 text-center">
       <button
         onClick={() => setShow(true)}
-        className="px-8 py-3 bg-pink-600 text-white rounded-full shadow-md text-lg"
-        style={{ fontFamily: "Fredoka" }}
+        className="px-8 py-3 bg-pink-400 text-white rounded-full shadow-md text-lg"
+        style={{ fontFamily: "Nunito" }}
       >
         You want a hug??? 🤗🐼
       </button>
@@ -666,7 +653,7 @@ const SendAHug = () => {
           <button
             onClick={() => setShow(false)}
             className="absolute bottom-10 px-6 py-2 bg-white rounded-full shadow-md text-purple-600"
-            style={{ fontFamily: "Fredoka" }}
+            style={{ fontFamily: "Nunito" }}
           >
             Close Hug 💗
           </button>

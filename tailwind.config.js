@@ -4,7 +4,15 @@ module.exports = {
     "./src/**/*.{js,jsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        heading: ["Dancing Script", "cursive"],
+        body: ["Quicksand", "sans-serif"],
+      },
+      colors: {
+        primary: "#D34E4E", // your new main color
+      },
+    },
   },
   plugins: [],
 };
