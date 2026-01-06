@@ -388,9 +388,21 @@ All the veryyyyyyyyyy bestttttttttttt alizehhhhhhhhh <3
       paper: "Corporate & Other Laws",
       date: "8 Jan 2026",
       emoji: "⚖️💼",
-      enabled: false,
-      msg:
-        "Law paper mein speed nahi, clarity ka game hota hai. Jab yeh open hoga, bas yaad rakhna — question ko samajhna aadha answer hota hai. Overthinking mat karna ✨.",
+      enabled: true,
+      msg: `I hope alu your Advanced Accounting paper went really, really well today. I honestly prayed so hard for you alizehhh, more than you know. From the moment you left for the exam till the time it ended, you were constantly in my duas alizehhh. 🤍
+
+Now, please let your mind rest a little. You deserve to breathe, to relax your shoulders, back, hands, eyes and brain to feel lighter. AA is done now. yayyyyyyy.
+
+Next is Law ahhhh. A fresh paper. A fresh chance. I dont know anything about this tooo omzi toh jo aata hai bhar dena paper m alizehhhh. Do well in this exam too and attempt whole paper aluuuu.
+
+And remember this always, you are not alone in this journey alizehhh. I’m here, cheering for you, praying for you, believing in you… 💗You’ve got this. More than you think. 🌷
+
+I’m wishing you the biggest, warmest all the best for this paper. I’ll be praying for you again for clarity, confidence, and peace in that exam hall. No matter how the paper comes, remember this you are prepared, you are capable, and you are never alone in this.
+`
+
+
+
+       
     },
     {
       paper: "Taxation",
