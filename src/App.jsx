@@ -7,6 +7,8 @@ import hug from "./hug.gif";
 import heart1 from "./heart1.png";
 import heart2 from "./heart2.png";
 import heart3 from "./heart3.png";
+import taxWarrior from "./alizeh.png";
+
 
 
 export default function App() {
@@ -408,9 +410,19 @@ I’m wishing you the biggest, warmest all the best for this paper. I’ll be pr
       paper: "Taxation",
       date: "10 Jan 2026",
       emoji: "🧾🔥",
-      enabled: false,
-      msg:
-        "Tax start hone se pehle heavy lagta hai, phir flow aa jaata hai. Ek question, ek step — bas wahi karna. Tu handle kar sakti hai, jaise hamesha karti hai 💼💗.",
+      image: taxWarrior, 
+      enabled: true,
+      msg: `OMZIIIII OKAYYY. LAW IS FINALLY DONE 😭🎉 Like fr fr. take a breath, you survived that paper. LET’S GOOO!!!
+
+Nowwww it’s Paper 3 TAX.AND YES, THIS IS THE LAST PAPER OF GROUP 1. Like actually the LAST ONE 😭🤍 After this, Group 1 is DONE DONE. Can you believe that???
+
+Okay but listen… this is Tax. The same Tax you’ve seen a hundred times, stressed over a hundred times, but dw this will you will beat its ASS aluuu hehe.
+It’s annoying, yes. It’s long, yes. But it’s not stronger than you samjhi kyaaaa.
+
+I know you’re tired. I know this phase is heavy. But you’re still standing, still trying, still pushing and that says everything.
+
+All the best for Tax Alizehhhh💗I’m rooting for you, praying for you, and believing in you. always.
+`
     },
   ];
 
@@ -490,11 +502,22 @@ I’m wishing you the biggest, warmest all the best for this paper. I’ll be pr
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
   >
-    
 
-    <p className="relative z-10 text-sm text-[#D34E4E] leading-relaxed whitespace-pre-line text-center ">
+        <p className="relative z-10 text-sm text-[#D34E4E] leading-relaxed whitespace-pre-line text-center">
       {p.msg}
     </p>
+    {p.paper === "Taxation" && (
+      <motion.img
+        src={taxWarrior}
+        alt="Alizeh vs Tax"
+        className="mx-auto mt-5 mb-4 w-56 md:w-50 drop-shadow-2xl"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.4 }}
+      />
+    )}
+
+
   </motion.div>
 )}
 
