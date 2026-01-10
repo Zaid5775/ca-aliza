@@ -1,55 +1,173 @@
-import { motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
+import { isMotionComponent, motion } from "framer-motion";
+import Confetti from "react-confetti";
+
+
+
 import panda1 from "./panda.png";
 import panda2 from "./panda2.png";
 import panda3 from "./panda3.png";
+import party from "./party.gif";
 import hug from "./hug.gif";
 import heart1 from "./heart1.png";
 import heart2 from "./heart2.png";
 import heart3 from "./heart3.png";
 import taxWarrior from "./alizeh.png";
-
-
+import tired from "./tired.gif";
+import locked from "./locked.gif";
+import barely from './barely.gif';
+import standing from "./standing.gif";
+import youcan from "./you-can.gif";
 
 export default function App() {
+  const [showConfetti, setShowConfetti] = useState(true);
+  const [showPopup, setShowPopup] = useState(false);
+  const [dimensions, setDimensions] = useState({
+  width: window.innerWidth,
+  height: window.innerHeight,
+});
+
+useEffect(() => {
+  if ("scrollRestoration" in window.history) {
+    window.history.scrollRestoration = "manual";
+  }
+}, []);
+
+
+useEffect(() => {
+  const handleResize = () =>
+    setDimensions({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setShowConfetti(false);
+    setShowPopup(true);
+  }, 2000);
+
+  return () => clearTimeout(timer);
+}, []);
 
   return (
-    <div
-      className="min-h-screen bg-pink-30 p-4 md:p-6 relative overflow-hidden"
-      onClick={(e) => createStar(e)}
-    >
-      <FloatingHearts />
+    <>
+      {/* CONFETTI */}
+{/* {showConfetti && (
+  <Confetti
+    width={dimensions.width}
+    height={dimensions.height}
+    numberOfPieces={5000}
+    gravity={0.1}
+    initialVelocityY={30}
+    initialVelocityX={30}
+    recycle={false}
+    confettiSource={{
+      x: dimensions.width / 2,
+      y: dimensions.height,
+      w: 40,
+      h: 20,
+    }}
+    colors={[  "#FD7979", // soft red
+  "#FFCDC9", // blush pink
+  "#FDACAC", // rose
+  "#FFD166", // warm yellow
+  "#06D6A0", // mint green
+  "#118AB2", // sky blue
+  "#9B5DE5", // lavender purple
+  "#F15BB5", // hot pink
+  "#00BBF9", // cyan
+  "#FF9F1C", // orange
+]}
+  />
+)}
+ */}
 
-      <div className="relative z-10">
-<motion.h1
-  className="text-3xl md:text-5xl text-[#D34E4E] font-bold text-center"
-  style={{ fontFamily: "Dancing Script" }}
->
-  Hi Future CA Girl 💖🌸
-</motion.h1>
 
-
-
-
-        <TypingMessage />
-        <Stickers />
-        <SurpriseCards />
-        <ExamMotivation />
-        <CuteLetter />
-        <Timeline />
-        <SendAHug />
-       
-
-        <p
-          className="text-center mt-10 text-purple-700 text-lg md:text-xl"
-          style={{ fontFamily: "Dancing Script" }}
+      {/*  POPUP AFTER CONFETTI */}
+      {showPopup && (
+        <motion.div
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
         >
-          
-        </p>
+          <motion.div
+            className="bg-white rounded-3xl p-6 max-w-sm text-center shadow-2xl border-2 border-[#FFE4EF]"
+            initial={{ scale: 0.8, y: 30 }}
+            animate={{ scale: 1, y: 0 }}
+          >
+            <img
+              src={party}
+              alt="celebration"
+              className="w-40 mx-auto mb-4"
+            />
+
+            <h2
+              className="text-2xl text-[#D34E4E] mb-2"
+              style={{ fontFamily: "Dancing Script" }}
+            >
+              OMFGGG 😭🎉
+            </h2>
+
+            <p
+              className="text-[#D34E4E] text-base"
+              style={{ fontFamily: "Nunito" }}
+            >
+              YAYYYYYYY!!!!  GROUP 1 IS FINALLY DONE DONE DONE 😻  
+              Like ACTUALLY done.  
+              Just one more group and alizeh can live her life peacefully 😼
+            </p>
+
+            <button
+              onClick={() => setShowPopup(false)}
+              className="mt-4 px-6 py-2 bg-[#FFE4EF] text-white rounded-full shadow-md"
+              style={{ fontFamily: "Nunito" }}
+            >
+              okayyy 😭💗
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
+
+      {/* 🌸 MAIN WEBSITE */}
+      <div
+        className="min-h-screen bg-pink-30 p-4 md:p-6 relative overflow-hidden"
+        onClick={(e) => createStar(e)}
+      >
+        <FloatingHearts />
+
+        <div className="relative z-10">
+          <motion.h1
+            className="text-3xl md:text-5xl text-[#D34E4E] font-bold text-center"
+            style={{ fontFamily: "Dancing Script" }}
+          >
+            Hi Future CA Girl 💖🌸
+          </motion.h1>
+
+          <TypingMessage />
+          <Stickers />
+          <SurpriseCards />
+          <ExamMotivation />
+          <CuteLetter />
+          <Timeline />
+          <SendAHug />
+
+          <p
+            className="text-center mt-10 text-purple-700 text-lg md:text-xl"
+            style={{ fontFamily: "Dancing Script" }}
+          >
+            {/* optional footer text */}
+          </p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
+
 
 /* -------------------- FLOATING HEARTS -------------------- */
 
@@ -349,6 +467,7 @@ const Timeline = () => {
 /* -------------------- EXAM MOTIVATION -------------------- */
 const ExamMotivation = () => {
   const [openKey, setOpenKey] = useState(null);
+  const [costStep, setCostStep] = useState(0);
 
   const group1 = [
     {
@@ -384,7 +503,6 @@ CA Aliza Sayyed🌸
 And one last thing
 All the veryyyyyyyyyy bestttttttttttt alizehhhhhhhhh <3
 `
-
     },
     {
       paper: "Corporate & Other Laws",
@@ -401,10 +519,6 @@ And remember this always, you are not alone in this journey alizehhh. I’m here
 
 I’m wishing you the biggest, warmest all the best for this paper. I’ll be praying for you again for clarity, confidence, and peace in that exam hall. No matter how the paper comes, remember this you are prepared, you are capable, and you are never alone in this.
 `
-
-
-
-       
     },
     {
       paper: "Taxation",
@@ -423,7 +537,7 @@ I know you’re tired. I know this phase is heavy. But you’re still standing, 
 
 All the best for Tax Alizehhhh💗I’m rooting for you, praying for you, and believing in you. always.
 `
-    },
+    }
   ];
 
   const group2 = [
@@ -431,25 +545,21 @@ All the best for Tax Alizehhhh💗I’m rooting for you, praying for you, and be
       paper: "Cost & Management Accounting",
       date: "12 Jan 2026",
       emoji: "📊💗",
-      enabled: false,
-      msg:
-        "Costing mein final answer se zyada process matter karta hai. Steps clean rakhna, working neat likhna. Agar atak bhi gayi, panic mat karna — marks milte hain ✨.",
+      enabled: true
     },
     {
       paper: "FM & SM",
       date: "17 Jan 2026",
       emoji: "📈🚀",
       enabled: false,
-      msg:
-        "Last paper energy drain karega, par relief bhi paas hoga. FM mein patience, SM mein structure — bas yahi yaad rakhna. End tak strong rehna, bas thoda sa aur 💖.",
+      msg: "This one will open sooooonnnnnn aluuuu 💗"
     },
-        {
+    {
       paper: "Auditing & Ethics",
       date: "19 Jan 2026",
       emoji: "📝🌸",
       enabled: false,
-      msg:
-        "Audit shor nahi karta, calm rehne walon ko reward karta hai. Short points, headings, simple language — bas yahi kaafi hai. Ethics toh waise bhi tu naturally samajhti hai 💗.",
+      msg: "This one will open sooooonnnnnn aluuuu 💗"
     }
   ];
 
@@ -462,71 +572,212 @@ All the best for Tax Alizehhhh💗I’m rooting for you, praying for you, and be
         <motion.div
           key={key}
           className={`relative overflow-hidden rounded-3xl p-5 border shadow-[0_8px_25px_rgba(0,0,0,0.1)]
-            ${
-              p.enabled
-                ? "bg-white cursor-pointer"
-                : "bg-gray-50 opacity-60 cursor-not-allowed"
-            }
-          `}
+            ${p.enabled ? "bg-white cursor-pointer" : "bg-gray-50 opacity-60 cursor-not-allowed"}`}
           style={{ fontFamily: "Nunito" }}
-
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
           onClick={() => {
             if (p.enabled) {
               setOpenKey(isOpen ? null : key);
+              setCostStep(0);
             }
           }}
         >
-          {/* glow */}
           <div className={`absolute -top-10 -left-10 w-24 h-24 ${glowClass} rounded-full blur-3xl opacity-30`} />
 
-          {/* header */}
-          <div className="flex justify-between items-center">
-            <h4 className="text-lg text-[#D34E4E] font-semibold">
-              {p.emoji} {p.paper}
-            </h4>
-            <span className="text-sm text-[#D34E4E]">
-              {p.enabled ? (isOpen ? "▲" : "▼") : "🔒"}
-            </span>
-          </div>
+          <h4 className="text-lg text-[#D34E4E] font-semibold">
+            {p.emoji} {p.paper}
+          </h4>
+          <p className="text-sm text-[#D34E4E] mt-1">Exam Date: {p.date}</p>
 
-          <p className="text-sm text-[#D34E4E] mt-1">
-            Exam Date: {p.date}
-          </p>
+          {/* NORMAL MESSAGE */}
+          {p.msg && isOpen && p.paper !== "Cost & Management Accounting" && (
+            <p className="mt-4 text-sm text-[#D34E4E] whitespace-pre-line text-center">
+              {p.msg}
+            </p>
+          )}
 
-          {/* message */}
-{p.enabled && isOpen && (
-  <motion.div
-    className="relative mt-4 p-4 rounded-2xl overflow-hidden"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-  >
+          {/* TAX IMAGE */}
+          {p.paper === "Taxation" && isOpen && (
+            <motion.img
+              src={taxWarrior}
+              className="mx-auto mt-5 w-56 drop-shadow-2xl"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+            />
+          )}
 
-        <p className="relative z-10 text-sm text-[#D34E4E] leading-relaxed whitespace-pre-line text-center">
-      {p.msg}
-    </p>
-    {p.paper === "Taxation" && (
-      <motion.img
-        src={taxWarrior}
-        alt="Alizeh vs Tax"
-        className="mx-auto mt-5 mb-4 w-56 md:w-50 drop-shadow-2xl"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.4 }}
-      />
+{/* COSTING INTERACTIVE */}
+{p.paper === "Cost & Management Accounting" && isOpen && (
+  <div className="mt-4 text-center text-[#D34E4E]">
+    {/* STEP 0 */}
+    {costStep === 0 && (
+      <>
+        <p className="text-sm">
+        Group 1 didn’t just end hehe it closed a chapter you worked really hard for alizehhh.
+      Every late night, every doubt, every “bas ek aur question” finally led you here.
+      That matters more than you realise.
+      <br /><br />
+      Now Group 2 begins, not as pressure,
+      but as proof that you’re still trying hard, still moving forward,
+      and still capable, even on tired days.
+        </p>
+        <p className="text-sm mt-1">
+          wanna see what you look like rn hehe?
+        </p>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setCostStep(1);
+          }}
+          className="mt-3 px-4 py-2 bg-[#FFE4EF] rounded-full"
+        >
+          show me 😭
+        </button>
+      </>
+    )}
+
+    {/* STEP 1 – FIRST GIF */}
+    {costStep === 1 && (
+      <>
+        <img src={tired} className="mx-auto mt-4 w-44" />
+        <p className="mt-2 text-sm">
+          yeah… that’s you okay??? don’t argue.
+        </p>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setCostStep(2);
+          }}
+          className="mt-3 px-4 py-2 bg-[#FFE4EF] rounded-full"
+        >
+          okay next
+        </button>
+      </>
+    )}
+
+    {/* STEP 2 – MOOD QUESTION */}
+    {costStep === 2 && (
+      <>
+        <p className="text-sm mt-3">
+          okay but tell me… what’s the mood really?
+        </p>
+
+        <div className="mt-3 flex flex-col gap-2 items-center">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setCostStep(3);
+            }}
+            className="px-4 py-2 bg-[#FFE4EF] rounded-full"
+          >
+            still standing 🫶
+          </button>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setCostStep(4);
+            }}
+            className="px-4 py-2 bg-[#FFE4EF] rounded-full"
+          >
+            barely alive 💀
+          </button>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setCostStep(5);
+            }}
+            className="px-4 py-2 bg-[#FFE4EF] rounded-full"
+          >
+            locked in 😤
+          </button>
+        </div>
+      </>
+    )}
+
+    {/* STEP 3–5 – RESPONSE GIF + MOVE TO CLOSURE */}
+ {(costStep === 3 || costStep === 4 || costStep === 5) && (
+  <>
+
+    <img
+      src={
+        costStep === 3
+          ? standing
+          : costStep === 4
+          ? barely
+          : locked
+      }
+      className="mx-auto mt-4 w-44"
+    />
+        {costStep === 3 && (
+      <p className="text-center text-[#D34E4E] text-sm mb-2">
+        Really??? Nah fr, you’re standing like this is light work. Main character energy only 😻
+      </p>
+    )}
+
+    {costStep === 4 && (
+      <p className="text-center text-[#D34E4E] text-sm mb-2">
+        Barely alive but still dangerous. Don’t underestimate her 😹
+      </p>
+    )}
+
+    {costStep === 5 && (
+      <p className="text-center text-[#D34E4E] text-sm mb-2">
+        Still studying like it’s day one. I see that focus and I’m proud of you 😼
+      </p>
     )}
 
 
-  </motion.div>
+    <button
+      onClick={(e) => {
+        e.stopPropagation();
+        setCostStep(6);
+      }}
+      className="mt-3 px-4 py-2 bg-[#FFE4EF] rounded-full"
+    >
+      okay 🫂
+    </button>
+  </>
 )}
 
 
-          {/* locked note */}
+    {/* STEP 6  */}
+    {costStep === 6 && (
+      <>
+<p className="mt-4 text-sm leading-relaxed">
+  hehe this was something special for my alu,
+  because those normal text motivations were enough till Group 1 ah 🤍  
+  this is Group 2 now. The first paper,
+  and I know you must be tired, nervous, and exhausted.
+  <br /><br />
+  but don’t worry alu.
+  just a few more days,
+  and after that… no more of this phase.
+  just relief, rest, and peace waiting for you.
+  <br /><br />
+  idk shit about this Costing subject either 😭
+  but what I *do* know is that you’ve studied hard.
+  and inshaAllah, Costing will go good too.
+  <br /><br />
+  finally… all the really really really best for Group 2 alizehhhh 💗  
+  and always remember this ↓
+</p>
+
+        {/* MOTIVATION GIF (YOU CAN CHANGE THIS) */}
+        <img
+          src={youcan}
+          className="mx-auto mt-4 w-90"
+        />
+      </>
+    )}
+  </div>
+)}
+
+
+
+
           {!p.enabled && (
-            <p
-              className={`mt-3 text-xs italic ${lockedTextColor}`}
-            >
+            <p className={`mt-3 text-xs italic ${lockedTextColor}`}>
               This one will open sooooonnnnnn aluuuu 💗
             </p>
           )}
@@ -543,23 +794,14 @@ All the best for Tax Alizehhhh💗I’m rooting for you, praying for you, and be
         Few Words for These Days 💌
       </h1>
 
-      {/* GROUP I */}
-      <div className="mb-10">
-
-        <div className="space-y-4">
-          {renderGroup(group1, "bg-pink-200", "text-gray-400")}
-        </div>
-      </div>
-
-      {/* GROUP II */}
-      <div>
-        <div className="space-y-4">
-          {renderGroup(group2, "bg-purple-200", "text-gray-400")}
-        </div>
+      <div className="space-y-6">
+        {renderGroup(group1, "bg-pink-200", "text-gray-400")}
+        {renderGroup(group2, "bg-purple-200", "text-gray-400")}
       </div>
     </div>
   );
 };
+
 
 
 

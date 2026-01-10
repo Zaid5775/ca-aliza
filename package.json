@@ -2,22 +2,20 @@
   "name": "myalu",
   "private": true,
   "version": "0.0.0",
-"homepage": "https://zaid5775.github.io/ca-aliza/",
-
-
+  "homepage": "https://zaid5775.github.io/ca-aliza/",
   "scripts": {
-    
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
-
   },
   "dependencies": {
     "framer-motion": "^12.23.25",
     "react": "^19.2.0",
+    "react-confetti": "^6.4.0",
+    "react-confetti-cannon": "^0.10.1",
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
