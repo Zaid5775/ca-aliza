@@ -362,31 +362,31 @@ const Timeline = () => {
       title: "CA Foundation (Done)",
       emoji: "📘",
       message:
-        "Your CA journey didn’t just start with Foundation… it started way before that — back when you were in 9th and 10th, getting inspired by every CA and every aspirant you saw. 🌟 You passed Foundation like a queen 👑, even when nobody knew how many days you studied silently, how many times you couldn’t tell anyone that things weren’t working… but you still showed up. That’s your strength 💗.",
+        "Your CA journey didn’t just start with Foundation… it started way before that, back when you were in 9th and 10th, getting inspired by every CA and every aspirant you saw. 🌟 You passed Foundation like a queen 👑, even when nobody knew how many days you studied silently, how many times you couldn’t tell anyone that things weren’t working… but you still showed up. That’s your strength 💗.",
     },
     {
       title: "CA Inter (Now)",
       emoji: "📚✨",
       message:
-        "This is where you are now — the hardest, heaviest phase. Long days, tired eyes, stress, pressure… but still you’re trying again and again. You once told your Ammi during FYBCOM exams, ‘Ab m thak gyi hu,’ and she said, ‘Abhi se? Abhi to shuruwat h.’ And look at you now… still fighting, still standing, still dreaming. That’s why I’m so proud of you 💕.",
+        "This is where you are now, the hardest, heaviest phase. Long days, tired eyes, stress, pressure… but still you’re trying again and again. You once told your Ammi during FYBCOM exams, ‘Ab m thak gyi hu,’ and she said, ‘Abhi se? Abhi to shuruwat h.’ And look at you now… still fighting, still standing, still dreaming. That’s why I’m so proud of you 💕.",
     },
     {
       title: "Articleship (Soon)",
       emoji: "📝",
       message:
-        "One day you’ll step into your Articleship — cute professional girl loading 😭💼. Your confidence will glow here, because you’re not average… you’re not weak… you’ve ALWAYS aimed high. You never settled for anything less than success, and that mindset will make you shine in every office you walk into ✨.",
+        "One day you’ll step into your Articleship, cute professional girl loading 😭💼. Your confidence will glow here, because you’re not average… you’re not weak… you’ve ALWAYS aimed high. You never settled for anything less than success, and that mindset will make you shine in every office you walk into ✨.",
     },
     {
       title: "CA Finals (Soon)",
       emoji: "🔥",
       message:
-        "CA Finals look scary… but you are scarier 🔥. Every attempt, every failure, every tear — they’re all building a stronger version of you. You’ve always seen top ranks and big dreams, and trust me, this fire inside you will take you all the way. You’re built for this 💖.",
+        "CA Finals look scary… but you are scarier 🔥. Every attempt, every failure, every tear, they’re all building a stronger version of you. You’ve always seen top ranks and big dreams, and trust me, this fire inside you will take you all the way. You’re built for this 💖.",
     },
     {
       title: "CA Sayyed Aliza",
       emoji: "💖🎓",
       message:
-        "One day We’ll call you **CA Sayyed Aliza**… . And when that day comes, you’ll remember every moment you wanted to give up but didn’t. Your journey is not ordinary — it’s powerful, emotional, and inspiring. You’ve carried pressure, expectations, and responsibility on your shoulders quietly… especially for your parents. You’ve always wanted to make them proud — and you will. All those late nights, silent breakdowns, hidden stress, and unstoppable effort… it will all come back to you as success. And I’ll be right here, witnessing your glow-up every step of the way 💕.",
+        "One day We’ll call you **CA Sayyed Aliza**… . And when that day comes, you’ll remember every moment you wanted to give up but didn’t. Your journey is not ordinary it’s powerful, emotional, and inspiring. You’ve carried pressure, expectations, and responsibility on your shoulders quietly… especially for your parents. You’ve always wanted to make them proud  and you will. All those late nights, silent breakdowns, hidden stress, and unstoppable effort… it will all come back to you as success. And I’ll be right here, witnessing your glow-up every step of the way 💕.",
     },
   ];
 
@@ -841,7 +841,7 @@ You’ve been knocked down so many times…
 more than people even know.  
 You’ve cried alone, studied with shaking hands,  
 woke up tired, slept tired,  
-and still —  
+and still
 you got up again. Every. Single. Time. 💖<br /><br />
 
 Do you know how rare that is?  
@@ -864,7 +864,7 @@ I’m ALWAYS here. Holding your hand. 💞<br /><br />
 
 CA Inter is not bigger than you.  
 Your past attempts are not your future.  
-Your failures don’t define you —  
+Your failures don’t define you 
 your strength does. ✨<br /><br />
 
 And you have something stronger than talent,  
@@ -876,8 +876,8 @@ you have **a fire inside you**
 that doesn’t die. 🔥<br /><br />
 
 One day…  
-maybe soon, maybe later —  
-but ONE DAY —  
+maybe soon, maybe later  
+but ONE DAY 
 you will see “Pass” next to your name.  
 And that day, the world will clap,  
 but I will say:  
@@ -892,7 +892,7 @@ Your desire to make your family proud.
 Your desire to make yourself proud.  
 Everything. 🌸<br /><br />
 
-So listen to me carefully, my love —  
+So listen to me carefully, my love 
 **You are not failing.  
 You are learning.  
 You are growing.  
@@ -903,7 +903,7 @@ I’m right here.
 Cheering for you,  
 supporting you,  
 hugging you,  
-loving you — always. 💗🌷
+loving you always. 💗🌷
 
         </motion.div>
       )}
