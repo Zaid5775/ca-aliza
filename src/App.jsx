@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { isMotionComponent, motion } from "framer-motion";
+import { isMotionComponent, motion , AnimatePresence} from "framer-motion";
 import Confetti from "react-confetti";
 
 
@@ -18,6 +18,9 @@ import locked from "./locked.gif";
 import barely from './barely.gif';
 import standing from "./standing.gif";
 import youcan from "./you-can.gif";
+import kill from "./kill.gif";
+import dancing from "./dancing.gif";
+import happy from "./happy.gif"
 
 export default function App() {
   const [showConfetti, setShowConfetti] = useState(true);
@@ -468,7 +471,10 @@ const Timeline = () => {
 const ExamMotivation = () => {
   const [openKey, setOpenKey] = useState(null);
   const [costStep, setCostStep] = useState(0);
-
+const [stressText, setStressText] = useState("");
+const [isShredded, setIsShredded] = useState(false);
+const [fmStep, setFmStep] = useState(0); // 0: Input, 1: Message
+const [isExploding, setIsExploding] = useState(false);
   const group1 = [
     {
       paper: "Advanced Accounting",
@@ -551,8 +557,7 @@ All the best for Tax Alizehhhh💗I’m rooting for you, praying for you, and be
       paper: "FM & SM",
       date: "17 Jan 2026",
       emoji: "📈🚀",
-      enabled: false,
-      msg: "This one will open sooooonnnnnn aluuuu 💗"
+      enabled: true
     },
     {
       paper: "Auditing & Ethics",
@@ -578,6 +583,10 @@ All the best for Tax Alizehhhh💗I’m rooting for you, praying for you, and be
             if (p.enabled) {
               setOpenKey(isOpen ? null : key);
               setCostStep(0);
+              setFmStep(0);
+              setIsShredded(false);
+              setIsExploding(false);
+              setStressText("");
             }
           }}
         >
@@ -773,7 +782,185 @@ All the best for Tax Alizehhhh💗I’m rooting for you, praying for you, and be
   </div>
 )}
 
+{p.paper === "FM & SM" && isOpen && (
+  <div className="mt-4 text-center">
+    <AnimatePresence mode="wait">
+      {fmStep === 0 ? (
+        <motion.div key="stage-input">
+          {!isExploding ? (
+            <motion.div exit={{ opacity: 0 }}>
+              <p className="text-[#D34E4E] text-sm mb-6 leading-relaxed ">
+                Thinking of you, Alizeh :/ I know how much pain that Costing prep caused you, but you faced it head-on. Ah ik last night, moment when you felt like losing hope were so tough...ik... But the hardest part is over. Only two more to go until you're finally free! So proud of you my alizeh<br /><br />
+                Well its time for FM and SM ah but dw we are not going to talk about this now. Rn what important is your HEALTH🌻 So please take care of it  <br /><br />
+                Aluuu, lemme know one thing that’s been bothering you or messing with your head today??
+              </p>
 
+              <div className="relative">
+                <input
+                  type="text"
+                  value={stressText}
+                  onClick={(e) => e.stopPropagation()}
+                  onChange={(e) => setStressText(e.target.value)}
+                  placeholder="e.g. stress, headache"
+                  className="w-full bg-transparent border-b-2 border-[#D34E4E]/30 p-4 text-xl text-[#D34E4E] text-center outline-none focus:border-[#D34E4E] transition-all"
+                />
+                
+                {stressText && (
+                  <motion.button
+                    whileTap={{ scale: 0.9 }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsExploding(true);
+                      setTimeout(() => {
+                        setFmStep(1);
+                        setIsExploding(false);
+                      }, 3000); // Give it 3 seconds for the shooting sequence
+                    }}
+                    className="mt-10 px-10 py-4 bg-[#D34E4E] text-white rounded-full font-black tracking-[0.2em] shadow-xl"
+                  >
+                    ELIMINATE 🎯
+                  </motion.button>
+                )}
+              </div>
+            </motion.div>
+          ) : (
+            /* THE SIDE-BY-SIDE GUN RANGE */
+            <div className="relative h-48 flex items-center justify-between px-4 overflow-hidden border-2 border-[#FFE4EF] rounded-3xl bg-white/30">
+              
+              {/* THE GUN (Custom SVG in Theme Color) */}
+              <motion.div
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                className="w-1/4"
+              >
+                <motion.svg 
+                  viewBox="0 0 100 60" 
+                  fill="#D34E4E"
+                  animate={{ 
+                    x: [0, -10, 0],
+                    rotate: [0, -5, 0]
+                  }}
+                  transition={{ repeat: 8, duration: 0.35 }}
+                >
+                  <path d="M10 20h60v15H10zM65 20l15 5v5l-15 5zM20 35l-5 15h10l5-15z" />
+                  <circle cx="75" cy="27.5" r="3" fill="white" />
+                </motion.svg>
+              </motion.div>
+
+              {/* THE BULLETS (Lines flying across) */}
+              <div className="absolute inset-0 pointer-events-none">
+                {[...Array(8)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute h-[2px] w-4 bg-[#D34E4E]"
+                    style={{ top: '50%', left: '25%' }}
+                    initial={{ x: 0, opacity: 0 }}
+                    animate={{ 
+                      x: [0, 200], 
+                      opacity: [0, 1, 0] 
+                    }}
+                    transition={{ 
+                      repeat: Infinity, 
+                      duration: 0.35, 
+                      delay: i * 0.35,
+                      ease: "linear"
+                    }}
+                  />
+                ))}
+              </div>
+
+              {/* THE TARGET TEXT */}
+              <motion.div
+                className="w-2/3 text-right"
+                animate={{ 
+                  x: [0, 5, 0],
+                  filter: ["brightness(1)", "brightness(1.5)", "brightness(1)"]
+                }}
+                transition={{ repeat: Infinity, duration: 0.35 }}
+              >
+                <span className="text-xl font-black text-[#D34E4E] uppercase break-all line-through decoration-white/50">
+                  {stressText}
+                </span>
+                <div className="flex justify-end gap-1 mt-1">
+                   {[...Array(3)].map((_, i) => (
+                     <motion.div 
+                        key={i}
+                        animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
+                        transition={{ repeat: Infinity, duration: 0.2, delay: i * 0.1 }}
+                        className="w-1 h-1 bg-[#D34E4E] rounded-full" 
+                     />
+                   ))}
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </motion.div>
+      ) : (
+        /* THE ORIGINAL MESSAGE CONTENT */
+
+<motion.div
+  key="stage-result"
+  initial={{ opacity: 0, filter: "blur(20px)" }}
+  animate={{ opacity: 1, filter: "blur(0px)" }}
+  transition={{ duration: 1 }}
+  className="relative py-6"
+>
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    {[...Array(6)].map((_, i) => (
+      <motion.div
+        key={i}
+        animate={{ y: [-20, 20], opacity: [0.2, 0.5, 0.2] }}
+        transition={{ duration: 3 + i, repeat: Infinity }}
+        className="absolute text-2xl"
+        style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%` }}
+      >✨</motion.div>
+    ))}
+  </div>
+
+  <motion.h2 className="text-3xl font-black text-[#D34E4E] uppercase mb-6 tracking-tight text-center">
+    Yayyy no more {stressText}!!!
+  </motion.h2>
+
+  <div className="text-[#D34E4E] text-sm space-y-4 leading-relaxed px-4 text-center">
+    <p className="font-bold">Alizeh, look at how far you've come.</p>
+    <p>
+     Finally, it’s your second-to-last exam! I know you must be so, so tired by now. Your brain, your body, everythin, but please don't worry, I’m right here with you. Just one more push for FM & SM and you’re almost at the finish line. I’m so proud of how you’ve handled everything so far. You're so close now Alizehhh💗.
+    </p>
+    <p className="italic"> 
+      The thing you just typed? It doesn't exist in your future okayyy? Now focus on your studies, and leave results on ALLAH🤍
+    </p>
+  </div>
+
+  <div className="text-center">
+    <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ delay: 0.5, type: "spring" }}
+        className="mt-8 inline-block p-1 rounded-full bg-gradient-to-tr from-pink-300 to-[#D34E4E]"
+    >
+        <div className="bg-white px-6 py-2 rounded-full">
+        <span className="text-xs font-bold text-[#D34E4E]">CA ALIZA SAYYED — LOADING 99%</span>
+        </div>
+    </motion.div>
+  </div>
+
+  <p className="mt-8 text-[10px] uppercase tracking-widest opacity-50 text-[#D34E4E] text-center">
+    Go finish what you started. I've cleared {stressText} out of your way.
+  </p>
+
+  {/* NEW SIDE-BY-SIDE GIFS ADDED HERE */}
+  <div className="mt-6 flex justify-center gap-7 px-2">
+    <img 
+      src={kill} 
+      alt="I killed the stress" 
+      className="w-1/2  " 
+    />
+  </div>
+</motion.div>
+      )}
+    </AnimatePresence>
+  </div>
+)}
 
 
           {!p.enabled && (
