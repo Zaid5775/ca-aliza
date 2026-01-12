@@ -469,6 +469,10 @@ const Timeline = () => {
 
 /* -------------------- EXAM MOTIVATION -------------------- */
 const ExamMotivation = () => {
+  useEffect(() => {
+  document.body.style.scrollBehavior = "auto";
+}, []);
+
   const [openKey, setOpenKey] = useState(null);
   const [costStep, setCostStep] = useState(0);
 const [stressText, setStressText] = useState("");
@@ -783,10 +787,8 @@ All the best for Tax Alizehhhh💗I’m rooting for you, praying for you, and be
 )}
 
 {p.paper === "FM & SM" && isOpen && (
-    <div
-    className="mt-4 text-center relative overflow-hidden"
-    style={{ height: "520px" }} 
-  >
+<div className="mt-4 text-center">
+  
 
     <AnimatePresence mode="wait">
       {fmStep === 0 ? (
@@ -853,7 +855,7 @@ All the best for Tax Alizehhhh💗I’m rooting for you, praying for you, and be
 
               {/* THE BULLETS (Lines flying across) */}
               <div className="absolute inset-0 pointer-events-none">
-                {[...Array(8)].map((_, i) => (
+                {[...Array(50)].map((_, i) => (
                   <motion.div
                     key={i}
                     className="absolute h-[2px] w-4 bg-[#D34E4E]"
@@ -882,7 +884,7 @@ All the best for Tax Alizehhhh💗I’m rooting for you, praying for you, and be
                 }}
                 transition={{ repeat: Infinity, duration: 0.35 }}
               >
-                <span className="text-xl font-black text-[#D34E4E] uppercase break-all line-through decoration-white/50">
+                <span className="text-xl font-black text-[#D34E4E] uppercase break-all  decoration-white/50">
                   {stressText}
                 </span>
                 <div className="flex justify-end gap-1 mt-1">
