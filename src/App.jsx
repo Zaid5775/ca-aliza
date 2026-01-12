@@ -783,7 +783,11 @@ All the best for Tax Alizehhhh💗I’m rooting for you, praying for you, and be
 )}
 
 {p.paper === "FM & SM" && isOpen && (
-  <div className="mt-4 text-center">
+    <div
+    className="mt-4 text-center relative overflow-hidden"
+    style={{ height: "520px" }} 
+  >
+
     <AnimatePresence mode="wait">
       {fmStep === 0 ? (
         <motion.div key="stage-input">
