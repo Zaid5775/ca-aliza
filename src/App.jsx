@@ -567,8 +567,8 @@ All the best for Tax Alizehhhh💗I’m rooting for you, praying for you, and be
       paper: "Auditing & Ethics",
       date: "19 Jan 2026",
       emoji: "📝🌸",
-      enabled: false,
-      msg: "This one will open sooooonnnnnn aluuuu 💗"
+      enabled: true,
+      msg: "All the best for Auditing & Ethics."
     }
   ];
 
