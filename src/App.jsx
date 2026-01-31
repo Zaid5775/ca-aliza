@@ -52,7 +52,7 @@ useEffect(() => {
   const timer = setTimeout(() => {
     setShowConfetti(false);
     setShowPopup(true);
-  }, 5000);
+  }, 10000);
 
   return () => clearTimeout(timer);
 }, []);
