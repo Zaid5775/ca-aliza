@@ -20,11 +20,19 @@ import standing from "./standing.gif";
 import youcan from "./you-can.gif";
 import kill from "./kill.gif";
 import dancing from "./dancing.gif";
-import happy from "./happy.gif"
+import happy from "./happy.gif";
+import cakeeating from "./cakeeating.gif";
+import dancing2 from "./dancing cat.gif";
+import goma from "./goma.gif";
+import hooray from "./hooray.gif";
+import vibe from "./vibe.gif";
+import startparty from "./startparty.gif";
+import popup from "./popup.gif";
+
 
 export default function App() {
   const [showConfetti, setShowConfetti] = useState(true);
-  const [showPopup, setShowPopup] = useState(false);
+  const [showGroup2Popup, setShowGroup2Popup] = useState(false);
   const [dimensions, setDimensions] = useState({
   width: window.innerWidth,
   height: window.innerHeight,
@@ -35,7 +43,10 @@ useEffect(() => {
     window.history.scrollRestoration = "manual";
   }
 }, []);
-
+const partyGifs = [
+  cakeeating, dancing, party, dancing2, goma,
+  hooray, vibe,startparty , popup, happy
+];
 
 useEffect(() => {
   const handleResize = () =>
@@ -51,8 +62,8 @@ useEffect(() => {
 useEffect(() => {
   const timer = setTimeout(() => {
     setShowConfetti(false);
-    setShowPopup(true);
-  }, 10000);
+    setShowGroup2Popup(true);
+  }, 2000);
 
   return () => clearTimeout(timer);
 }, []);
@@ -132,51 +143,94 @@ colors={[
 
  
 
+{showGroup2Popup && (
+  <motion.div
+    className="fixed inset-0 z-[999999] bg-white flex flex-col items-center justify-start overflow-y-auto"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+  >
+    {/* 🌧️ THE FALLING GIFS - These will "rain" down the screen */}
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {partyGifs.map((gif, i) => (
+        <motion.img
+          key={i}
+          src={gif}
+          className="absolute w-24 md:w-32 rounded-2xl shadow-sm border border-pink-50"
+          style={{
+            // Spacing them across the width of the phone
+            left: `${(i * 25) % 85}%`, 
+          }}
+          initial={{ y: -200, opacity: 0, rotate: Math.random() * 20 - 10 }}
+          animate={{ 
+            y: [window.innerHeight + 200, -200], // Loop them falling upwards/downwards for constant life
+            opacity: [0, 1, 1, 0],
+          }}
+          transition={{ 
+            duration: 8 + Math.random() * 5, 
+            repeat: Infinity, 
+            delay: i * 0.8,
+            ease: "linear"
+          }}
+        />
+      ))}
+    </div>
 
-      {/*  POPUP AFTER CONFETTI */}
-      {showPopup && (
-        <motion.div
-          className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+    {/* ✨ THE MAIN HERO CONTENT - Tall and Phone-Friendly */}
+    <div className="relative z-10 w-full min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-gradient-to-b from-white/20 via-white/80 to-white/20 backdrop-blur-[2px]">
+      
+      <motion.div
+        initial={{ scale: 0.5, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="text-center mb-10"
+      >
+        <div className="text-6xl mb-4">🕊️</div>
+        <h2 
+          className="text-6xl text-[#2D2424]" 
+          style={{ fontFamily: "Dancing Script", fontWeight: 900 }}
         >
-          <motion.div
-            className="bg-white rounded-3xl p-6 max-w-sm text-center shadow-2xl border-2 border-[#FFE4EF]"
-            initial={{ scale: 0.8, y: 30 }}
-            animate={{ scale: 1, y: 0 }}
-          >
-            <img
-              src={party}
-              alt="celebration"
-              className="w-40 mx-auto mb-4"
-            />
+          Alizeh
+        </h2>
+        <p className="text-[#D34E4E] font-black tracking-[0.3em] uppercase text-xs mt-2">
+          Group 2 Finalized
+        </p>
+      </motion.div>
 
-            <h2
-              className="text-2xl text-[#D34E4E] mb-2"
-              style={{ fontFamily: "Dancing Script" }}
-            >
-              OMFGGG 😭🎉
-            </h2>
+      {/* 💌 FLOATING GLASS MESSAGE */}
+      <motion.div
+        className="w-full max-w-sm bg-white/40 border border-white/60 backdrop-blur-xl p-8 rounded-[40px] shadow-xl text-center"
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.5 }}
+      >
+        <p className="text-[#5D4037] text-lg md:text-xl font-bold leading-tight" style={{ fontFamily: "Nunito" }}>
+          The era of exams is <span className="text-pink-500 underline decoration-pink-200">over</span>. 🥂
+        </p>
+        
+        <p className="text-[#8D6E63] text-sm mt-4 italic">
+          "No more papers, no more stress. <br /> It's time to reclaim your smile."
+        </p>
 
-            <p
-              className="text-[#D34E4E] text-base"
-              style={{ fontFamily: "Nunito" }}
-            >
-              YAYYYYYYY!!!!  GROUP 1 IS FINALLY DONE DONE DONE 😻  
-              Like ACTUALLY done.  
-              Just one more group and alizeh can live her life peacefully 😼
-            </p>
+        <motion.button
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setShowGroup2Popup(false)}
+          className="mt-8 w-full py-5 bg-[#2D2424] text-white rounded-2xl font-bold uppercase tracking-widest text-xs shadow-2xl"
+        >
+          ENTER FREEDOM 💃
+        </motion.button>
+      </motion.div>
 
-            <button
-              onClick={() => setShowPopup(false)}
-              className="mt-4 px-6 py-2 bg-[#FFE4EF] text-white rounded-full shadow-md"
-              style={{ fontFamily: "Nunito" }}
-            >
-              okayyy 😭💗
-            </button>
-          </motion.div>
-        </motion.div>
-      )}
+      {/* 🌸 SUBTLE FOOTER */}
+      <motion.div 
+        className="mt-12 text-[10px] tracking-[0.5em] text-[#D34E4E] opacity-30 font-black"
+        animate={{ opacity: [0.2, 0.5, 0.2] }}
+        transition={{ duration: 3, repeat: Infinity }}
+      >
+        CHAPTER 02 • 2026
+      </motion.div>
+    </div>
+  </motion.div>
+)}
+
 
       {/* 🌸 MAIN WEBSITE */}
       <div
