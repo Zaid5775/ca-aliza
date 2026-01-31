@@ -52,43 +52,85 @@ useEffect(() => {
   const timer = setTimeout(() => {
     setShowConfetti(false);
     setShowPopup(true);
-  }, 2000);
+  }, 5000);
 
   return () => clearTimeout(timer);
 }, []);
 
   return (
     <>
-      {/* CONFETTI */}
-{/* {showConfetti && (
-  <Confetti
-    width={dimensions.width}
-    height={dimensions.height}
-    numberOfPieces={5000}
-    gravity={0.1}
-    initialVelocityY={30}
-    initialVelocityX={30}
-    recycle={false}
-    confettiSource={{
-      x: dimensions.width / 2,
-      y: dimensions.height,
-      w: 40,
-      h: 20,
-    }}
-    colors={[  "#FD7979", // soft red
-  "#FFCDC9", // blush pink
-  "#FDACAC", // rose
-  "#FFD166", // warm yellow
-  "#06D6A0", // mint green
-  "#118AB2", // sky blue
-  "#9B5DE5", // lavender purple
-  "#F15BB5", // hot pink
-  "#00BBF9", // cyan
-  "#FF9F1C", // orange
+{showConfetti && (
+  <div className="fixed inset-0 z-[9999] pointer-events-none">
+    <Confetti
+      width={dimensions.width}
+      height={dimensions.height}
+      numberOfPieces={15000}
+      gravity={0.04}
+      initialVelocityY={25}
+      initialVelocityX={20}
+      recycle={false}
+      confettiSource={{
+        x: dimensions.width / 2,
+        y: dimensions.height,
+        w: 40,
+        h: 20,
+      }}
+colors={[
+  // reds & pinks
+  "#FD7979",
+  "#FF6F91",
+  "#FF8FAB",
+  "#FFADC6",
+  "#FFCDC9",
+  "#FDACAC",
+  "#FFE4EF",
+  "#FFD6E8",
+  "#FBC4D9",
+  "#FFC6FF",
+
+  // purples & lavenders
+  "#9B5DE5",
+  "#B983FF",
+  "#CDB4DB",
+  "#D6C7FF",
+  "#E0BBE4",
+  "#EAD7F5",
+
+  // blues
+  "#118AB2",
+  "#00BBF9",
+  "#90DBF4",
+  "#A0C4FF",
+  "#BDE0FE",
+  "#CAE9FF",
+
+  // greens & mints
+  "#06D6A0",
+  "#9AE6B4",
+  "#B7E4C7",
+  "#C1E1C1",
+  "#D8F3DC",
+
+  // yellows & peaches
+  "#FFD166",
+  "#FFF1A8",
+  "#FFEB99",
+  "#FFDDC1",
+  "#FFB703",
+  "#FF9F1C",
+
+  // extra fairy dust
+  "#F15BB5",
+  "#FFAFCC",
+  "#FEEAFA",
 ]}
-  />
+
+
+    />
+  </div>
 )}
- */}
+
+ 
 
 
       {/*  POPUP AFTER CONFETTI */}
