@@ -48,6 +48,27 @@ const partyGifs = [
   hooray, vibe,startparty , popup, happy
 ];
 
+const GifSequencer = ({ gif, index, total }) => {
+  const [current, setCurrent] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => setCurrent((prev) => (prev + 1) % total), 2500);
+    return () => clearInterval(timer);
+  }, [total]);
+
+  if (current !== index) return null;
+
+  return (
+    <motion.img
+      src={gif}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 1.05 }}
+      transition={{ duration: 0.4 }}
+      // 'object-contain' ensures the whole GIF is visible, 'h-full w-full' fills the container
+      className="absolute inset-0 w-full h-full object-contain rounded-[2.5rem] bg-white/50"
+    />
+  );
+};
 useEffect(() => {
   const handleResize = () =>
     setDimensions({
@@ -63,13 +84,14 @@ useEffect(() => {
   const timer = setTimeout(() => {
     setShowConfetti(false);
     setShowGroup2Popup(true);
-  }, 2000);
+  }, 10000);
 
   return () => clearTimeout(timer);
 }, []);
 
   return (
     <>
+
 {showConfetti && (
   <div className="fixed inset-0 z-[9999] pointer-events-none">
     <Confetti
@@ -141,97 +163,108 @@ colors={[
   </div>
 )}
 
- 
 
 {showGroup2Popup && (
   <motion.div
-    className="fixed inset-0 z-[999999] bg-white flex flex-col items-center justify-start overflow-y-auto"
+    className="fixed inset-0 z-[999999] bg-[#fffafb] flex items-center justify-center p-4 overflow-hidden"
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
   >
-    {/* 🌧️ THE FALLING GIFS - These will "rain" down the screen */}
-    <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      {partyGifs.map((gif, i) => (
-        <motion.img
-          key={i}
-          src={gif}
-          className="absolute w-24 md:w-32 rounded-2xl shadow-sm border border-pink-50"
-          style={{
-            // Spacing them across the width of the phone
-            left: `${(i * 25) % 85}%`, 
-          }}
-          initial={{ y: -200, opacity: 0, rotate: Math.random() * 20 - 10 }}
-          animate={{ 
-            y: [window.innerHeight + 200, -200], // Loop them falling upwards/downwards for constant life
-            opacity: [0, 1, 1, 0],
-          }}
-          transition={{ 
-            duration: 8 + Math.random() * 5, 
-            repeat: Infinity, 
-            delay: i * 0.8,
-            ease: "linear"
-          }}
-        />
-      ))}
+    {/* ✨ Background Sparkles */}
+    <div className="absolute inset-0 pointer-events-none">
+       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_#ffd1dc_0%,_transparent_70%)] opacity-40 blur-[100px]" />
     </div>
 
-    {/* ✨ THE MAIN HERO CONTENT - Tall and Phone-Friendly */}
-    <div className="relative z-10 w-full min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-gradient-to-b from-white/20 via-white/80 to-white/20 backdrop-blur-[2px]">
+    <motion.div 
+      // Changed: Max height reduced to 92vh to ensure button visibility on all screens
+      className="relative z-10 w-[95%] max-w-[420px] max-h-[92vh] bg-white/90 backdrop-blur-2xl rounded-[3rem] p-6 shadow-[0_20px_80px_rgba(253,164,175,0.2)] border border-white flex flex-col items-center justify-between"
+      initial={{ scale: 0.95, y: 30 }}
+      animate={{ scale: 1, y: 0 }}
+    >
       
-      <motion.div
-        initial={{ scale: 0.5, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        className="text-center mb-10"
-      >
-        <div className="text-6xl mb-4">🕊️</div>
-        <h2 
-          className="text-6xl text-[#2D2424]" 
-          style={{ fontFamily: "Dancing Script", fontWeight: 900 }}
+      {/* 🎞️ GIF CONTAINER - Shrunk height to pull everything up */}
+      <div className="w-full h-[180px] md:h-[240px] relative mt-2 flex-shrink-0">
+        <div className="absolute inset-0 bg-pink-50 rounded-[2rem] blur-xl opacity-30" />
+        <AnimatePresence mode="wait">
+          {partyGifs.map((gif, i) => (
+             <GifSequencer key={i} gif={gif} index={i} total={partyGifs.length} />
+          ))}
+        </AnimatePresence>
+      </div>
+
+      {/* 💌 MESSAGE CENTER - Compact Spacing */}
+      <div className="flex-1 flex flex-col justify-center items-center text-center w-full py-2">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
+          <span className="text-[9px] font-black uppercase tracking-[0.4em] text-pink-400 mb-1 block">
+            A New Chapter Begins
+          </span>
+          <h2 
+            className="text-5xl md:text-7xl text-[#2D2424] leading-tight mb-2"
+            style={{ fontFamily: "Dancing Script", fontWeight: 900 }}
+          >
+            Alizeh
+          </h2>
+        </motion.div>
+
+        <motion.div 
+          className="space-y-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
         >
-          Alizeh
-        </h2>
-        <p className="text-[#D34E4E] font-black tracking-[0.3em] uppercase text-xs mt-2">
-          Group 2 Finalized
-        </p>
-      </motion.div>
+          <p className="text-[#5D4037] text-base md:text-xl font-medium leading-tight italic" style={{ fontFamily: "Nunito" }}>
+            "No more chapters to revise. <br /> 
+           You gave everything you had, <span className="text-pink-500 font-bold">even on the hard days</span> Now it’s your time to rest."
+          </p>
+          
+          <div className="flex items-center justify-center gap-3 text-pink-200 py-1">
+            <span className="text-sm">🌸</span>
+            <div className="h-[1px] w-12 bg-pink-100" />
+            <span className="text-sm">🌸</span>
+          </div>
 
-      {/* 💌 FLOATING GLASS MESSAGE */}
-      <motion.div
-        className="w-full max-w-sm bg-white/40 border border-white/60 backdrop-blur-xl p-8 rounded-[40px] shadow-xl text-center"
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.5 }}
-      >
-        <p className="text-[#5D4037] text-lg md:text-xl font-bold leading-tight" style={{ fontFamily: "Nunito" }}>
-          The era of exams is <span className="text-pink-500 underline decoration-pink-200">over</span>. 🥂
-        </p>
-        
-        <p className="text-[#8D6E63] text-sm mt-4 italic">
-          "No more papers, no more stress. <br /> It's time to reclaim your smile."
-        </p>
+          <p className="text-[#8D6E63] text-[10px] md:text-xs opacity-90 leading-tight">
+            You worked so hard. Now it's time to have fun yayyyyy 
+          </p>
+        </motion.div>
+      </div>
 
-        <motion.button
-          whileTap={{ scale: 0.95 }}
-          onClick={() => setShowGroup2Popup(false)}
-          className="mt-8 w-full py-5 bg-[#2D2424] text-white rounded-2xl font-bold uppercase tracking-widest text-xs shadow-2xl"
-        >
-          ENTER FREEDOM 💃
-        </motion.button>
-      </motion.div>
+      {/* 🥂 BOTTOM BUTTON - Pulled up with flex-shrink-0 */}
+<motion.button
+  whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(255, 182, 193, 0.4)" }}
+  whileTap={{ scale: 0.95 }}
+  onClick={() => setShowGroup2Popup(false)}
+  className="relative w-full py-4 mt-4 mb-2 flex-shrink-0 group overflow-hidden"
+>
+  {/* ⚡ THE BACKGROUND: Glass + Gradient Border */}
+  <div className="absolute inset-0 bg-[#D34E4E] rounded-2xl transition-all duration-300 group-hover:bg-[#da3c3c]" />
+  
+  {/* ✨ THE SHIMMER: Animated light ray that passes over the button */}
+  <motion.div
+    initial={{ x: "-100%" }}
+    animate={{ x: "100%" }}
+    transition={{ repeat: Infinity, duration: 2, ease: "linear", delay: 1 }}
+    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12"
+  />
 
-      {/* 🌸 SUBTLE FOOTER */}
-      <motion.div 
-        className="mt-12 text-[10px] tracking-[0.5em] text-[#D34E4E] opacity-30 font-black"
-        animate={{ opacity: [0.2, 0.5, 0.2] }}
-        transition={{ duration: 3, repeat: Infinity }}
-      >
-        CHAPTER 02 • 2026
-      </motion.div>
-    </div>
+  {/* 🖋️ THE TEXT */}
+  <span className="relative z-10 flex items-center justify-center gap-2 text-white font-black text-[11px] uppercase tracking-[0.3em]">
+    Go Back
+    <motion.span
+      animate={{ rotate: [0, 15, -15, 0] }}
+      transition={{ repeat: Infinity, duration: 2 }}
+    >
+      🥂
+    </motion.span>
+  </span>
+
+  {/* 🌸 THE UNDER-GLOW: Appears on hover */}
+  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-pink-400 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
+</motion.button>
+      
+    </motion.div>
   </motion.div>
 )}
-
-
       {/* 🌸 MAIN WEBSITE */}
       <div
         className="min-h-screen bg-pink-30 p-4 md:p-6 relative overflow-hidden"
@@ -263,6 +296,8 @@ colors={[
           </p>
         </div>
       </div>
+
+
     </>
   );
 }
